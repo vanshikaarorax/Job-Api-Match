@@ -95,3 +95,22 @@ The scorer accepts a validated `ScoringWeights` object. Defaults are 50 skills,
 20 experience, 15 location, and 15 salary. Environment overrides are available
 through the `SCORING_*_WEIGHT` values in `.env`; all values must be non-negative
 and total 100.
+
+## Frontend demo
+
+`frontend/` is an optional, deliberately small React/Vite demonstration UI; it
+is not required assignment functionality. The FastAPI API remains the sole
+source of truth for validation, scoring, and recommendations.
+
+```bash
+cd frontend
+cp .env.example .env
+npm install
+npm run dev
+```
+
+Set `VITE_API_BASE_URL` to the FastAPI base URL (by default,
+`http://localhost:8000`). To run the UI against the Dockerized backend, start
+the existing backend stack with `docker compose up --build`, then run the Vite
+commands above. The browser UI sends its candidate, job, and recommendation
+requests directly to FastAPI.
